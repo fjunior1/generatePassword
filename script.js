@@ -27,7 +27,7 @@ function generatePassword() {
   // ask for password lenght 8-128
   while (passLength === -1) {
     // Ask for password length(8-128))
-    let num = prompt("Q 1/5: Enter length of password(number 8-128):");
+    let num = prompt("Q 1/5: Enter length of password (number 8-128):");
     // check if user cancelled prompt, in this case exit with no password generated, empty string
     if (num === null) {
       return "";
