@@ -43,7 +43,7 @@ function generatePassword() {
     }
   }
 
-  // ask: usenumber(s) in password?
+  // ask: use number(s) in the password?
   if (confirm("Q 2/5: use number(s) in password? (OK => yes, cancel => no)")) {
     useNumber = true;
     types.push("number");
@@ -69,16 +69,17 @@ function generatePassword() {
 
   if (types.length == 0) {
     // this is special case, user selected a valid number of chars for the password, 
-    // but selected not types (number, lower, upeer, special) of chars to use
+    // but selected no types (number, lower, upeer, special) of chars to use
     // return empty string in this case.
     return "";
   }
     
+  // loop for the number of chars to generate for the password
   for (let i = 0; i < passLength; i++){
     //random for type
     let type = Math.floor(Math.random()*types.length); 
 
-    // random for value type to use in nextchar for password 
+    // random for value type to use in next char for password 
     let value;
     switch (types[type]) {
       case "number":
@@ -86,8 +87,8 @@ function generatePassword() {
         break;
       
       case "lower":
-        /* decomposing this line to explain.
-         see ascci codes in this page : https://www.commfront.com/pages/ascii-chart
+        /* Decomposing this line to explain.
+         See ascci codes in this page : https://www.commfront.com/pages/ascii-chart
          I found that the lower case chars are one after another from 'a'=code(97) to 'z'=code(122)
          so use 'a' code as number and add a random number from 0-25 to get a char in the range 'a'-'z'
          for example:
@@ -107,7 +108,7 @@ function generatePassword() {
       case "special":
         /* there is a list of special character given in the link from the readme file at
            https://owasp.org/www-community/password-special-characters
-           We just used that list as string and use a random number to access entries 
+           We just used that list as string and used a random number to access entries 
            in this list to assign to value.
            The random number goes from 0 to the lenght of the special char list
          */
@@ -115,7 +116,7 @@ function generatePassword() {
         break;
     }
     
-    // add value generated to the password variable.
+    // add value generated ( single char) to the password variable.
     // genPass will contain random values based on the user selected option of char types and length
     genPass += value;
   }
